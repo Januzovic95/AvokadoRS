@@ -1,0 +1,201 @@
+{% comment %} {{ 'lsg-50-50.css' | asset_url | stylesheet_tag }} {% endcomment %}
+{% liquid
+  assign fiftyRotate = section.settings.fifty_rotate
+  assign fiftyPreHeadline = section.settings.fifty_pre_headline
+  assign fiftyTitle = section.settings.fifty_title
+  assign fifty_subheadline = section.settings.fifty_subheadline
+  assign fiftyCopy = section.settings.fifty_copy
+  assign fiftyImgDesk = section.settings.fifty_img_desk
+  assign fiftyImgMobile = section.settings.fifty_img_mobile
+  assign fiftyBtnUrl = section.settings.fifty_btn_url
+  assign fiftyBtnText = section.settings.fifty_btn_text
+  assign fiftyCopyBlock = section.blocks | where: 'type', 'fifty_copy_block'
+  comment
+    STYLE
+  endcomment
+  assign background_color = section.settings.background_color
+  assign mob_padding_top = section.settings.mob_padding_top
+  assign mob_padding_bottom = section.settings.mob_padding_bottom
+  assign desk_padding_top = section.settings.desk_padding_top
+  assign desk_padding_bottom = section.settings.desk_padding_bottom
+%}
+{%- style -%}
+  .{{ section.id }} {
+    background-color: {{ background_color }};
+    padding-top: {{ mob_padding_top }}px;
+    padding-bottom: {{ mob_padding_bottom }}px;
+  }
+  @media screen and (min-width: 768px) {
+    .{{ section.id }} {
+      padding-top: {{ desk_padding_top }}px;
+      padding-bottom: {{ desk_padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<section class="lsg-50-50 {{ section.id }}">
+  <div class="lsg-wrapper">
+    <div class="lsg-50__wrapper {% if fiftyRotate %} lsg-50__wrapper-reverse {% endif %}">
+      <div class="lsg-50__img-wrapper lsg-image">
+        <picture>
+          <source media="(min-width: 768px)" srcset="{{ section.settings.fifty_img_desk | image_url: width: 628 }} 628w" />
+          {{ section.settings.fifty_img_mobile | image_url: width: 500 | image_tag }}
+        </picture>
+      </div>
+      <div class="lsg-50__content-wrapper">
+        {% if fiftyPreHeadline != '' %}
+          <h3 class="lsg-50__pre-headline lsg-title text-red lsg-text--big">
+            {{ fiftyPreHeadline }}
+          </h3>
+        {% endif %}
+        {% if fiftyTitle != '' %}
+          <h2 class="lsg-50__headline lsg-title text-red lsg-title--secondary">
+            {{ fiftyTitle }}
+          </h2>
+        {% endif %}
+        {% if fifty_subheadline != '' %}
+          <h4 class="lsg-50__subheadline lsg-title text-red lsg-text--big">
+            {{ fifty_subheadline }}
+          </h4>
+        {% endif %}
+        {% if fiftyCopy != '' %}
+          <div class="lsg-50__copy text-red lsg-text">
+            {{ fiftyCopy }}
+          </div>
+        {% endif %}
+        {% if fiftyCopyBlock.size > 0 %}
+          <div class="lsg-50__items">
+            {% for block in fiftyCopyBlock %}
+              {% assign blockCopyText = block.settings.block_copy_text %}
+              <div class="lsg-50__item">
+                {% if blockCopyText != '' %}
+                  <div class="lsg-50__item-copy text-red">
+                    {{ blockCopyText }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% if fiftyBtnUrl %}
+          <div class="lsg-50__btn">
+            <a
+              href="{{ fiftyBtnUrl }}"
+              title="{{ fiftyBtnText }}"
+              class="lsg-btn lsg-btn__color-tertiary">{{ fiftyBtnText }}</a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Lsg 50/50",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "fifty_rotate",
+        "label": "Section Rotate",
+        "info": "Check to rotate a section",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "fifty_pre_headline",
+        "label": "Section Pre-Headline"
+      },
+      {
+        "type": "text",
+        "id": "fifty_title",
+        "label": "Section Headline"
+      },
+      {
+        "type": "text",
+        "id": "fifty_subheadline",
+        "label": "Section Subheadline"
+      }, {
+        "type": "richtext",
+        "id": "fifty_copy",
+        "label": "Section Copy"
+      }, {
+        "type": "image_picker",
+        "id": "fifty_img_desk",
+        "label": "Section Image Desk"
+      }, {
+        "type": "image_picker",
+        "id": "fifty_img_mobile",
+        "label": "Section Image Mobile"
+      }, {
+        "type": "url",
+        "id": "fifty_btn_url",
+        "label": "Section Button URL"
+      }, {
+        "type": "text",
+        "id": "fifty_btn_text",
+        "label": "Section Button Text"
+      }, {
+        "type": "header",
+        "content": "Section Style"
+      }, {
+        "type": "color",
+        "id": "background_color",
+        "label": "Section background color",
+        "default": "#fff"
+      }, {
+        "type": "range",
+        "id": "mob_padding_top",
+        "min": 0,
+        "max": 200,
+        "step": 5,
+        "unit": "px",
+        "label": "Section padding top - small screens",
+        "default": 80
+      }, {
+        "type": "range",
+        "id": "mob_padding_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 5,
+        "unit": "px",
+        "label": "Section padding bottom - small screens",
+        "default": 80
+      }, {
+        "type": "range",
+        "id": "desk_padding_top",
+        "min": 0,
+        "max": 200,
+        "step": 5,
+        "unit": "px",
+        "label": "Section padding top - big screens",
+        "default": 100
+      }, {
+        "type": "range",
+        "id": "desk_padding_bottom",
+        "min": 0,
+        "max": 200,
+        "step": 5,
+        "unit": "px",
+        "label": "Section padding bottom - big screens",
+        "default": 100
+      }
+    ],
+    "blocks": [
+      {
+        "type": "fifty_copy_block",
+        "name": "Copy Block",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "block_copy_text",
+            "label": "Block Copy"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Lsg 50/50"
+      }
+    ]
+  }
+{% endschema %}
