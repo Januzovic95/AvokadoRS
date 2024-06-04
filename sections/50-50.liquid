@@ -38,7 +38,7 @@
       <div class="lsg-50__img-wrapper lsg-image">
         <picture>
           <source media="(min-width: 768px)" srcset="{{ section.settings.fifty_img_desk | image_url: width: 628 }} 628w" />
-          {{ section.settings.fifty_img_mobile | image_url: width: 500 | image_tag }}
+          {% comment %} {{ section.settings.fifty_img_mobile | image_url: width: 500 | image_tag }} {% endcomment %}
         </picture>
       </div>
       <div class="lsg-50__content-wrapper">
