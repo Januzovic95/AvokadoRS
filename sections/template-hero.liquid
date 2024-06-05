@@ -6,7 +6,7 @@
   assign hero_block = section.blocks | where: 'type', 'hero_block'
 %}
 
-<section class="hero-section">
+<section class="hero-section bg-dark">
 
   <div class="l">
     <div class="hero-text__wrapper">
@@ -27,6 +27,7 @@
             <div class="hero-block__item">
               {% if block_text != '' %}
                 <div class="hero-block__item-copy white-text">
+                  {{ block_img }}
                   {{ block_text }}
                 </div>
               {% endif %}
@@ -67,6 +68,10 @@
             "type": "richtext",
             "id": "block_text",
             "label": "Block Text"
+          }, {
+            "type": "image_picker",
+            "id": "block_img",
+            "label": "Block Image"
           }
         ]
       }
