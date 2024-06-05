@@ -1,0 +1,44 @@
+{{ 'template-hero.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign hero_heading = section.settings.hero_heading
+  assign hero_subheading = section.settings.hero_subheading
+%}
+<section class="hero-section">
+
+  <div class="l">
+
+    {% if hero_heading != blank %}
+      <h1 class="hero-heading white-text uppercase">
+        {{ hero_heading }}
+      </h1>
+    {% endif %}
+
+    {% if hero_subheading != blank %}
+      <p class="hero-subheading white-text uppercase">{{ hero_subheading }}</p>
+
+    {% endif %}
+
+  </div>
+
+
+</section>
+
+{% schema %}
+  {
+    "name": "Hero Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "hero_heading",
+        "label": "Hero Heading",
+        "default": "The Date Night Activity for (True Crime) Lovers"
+      }, {
+        "type": "text",
+        "id": "hero_subheading",
+        "label": "Hero Subeading",
+        "default": "Hunt A Killer: an immersive murder mystery game that’ll keep you and your partner off your phones and cracking cases instead."
+      }
+    ]
+  }
+{% endschema %}

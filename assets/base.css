@@ -1,0 +1,37 @@
+:root {
+  --bg-dark-color: #121212;
+  --bg-white-color: #fff;
+
+  --text-dark-color: #121212;
+  --text-white-color: #fff;
+}
+
+/* BASE SETTINGS */
+.l {
+  width: 100%;
+  max-width: 1140px;
+  padding-inline: 20px;
+  margin: 0 auto;
+}
+
+.bg-dark {
+  background-color: var(--bg-dark-color);
+}
+.bg-white {
+  background-color: var(--bg-dark-white);
+}
+
+.dark-text {
+  background-color: var(--bg-dark-color);
+}
+.white-text {
+  background-color: var(--bg-dark-white);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+/* END BASE SETTINGS */
