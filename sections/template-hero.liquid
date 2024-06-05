@@ -3,21 +3,39 @@
 {% liquid
   assign hero_heading = section.settings.hero_heading
   assign hero_subheading = section.settings.hero_subheading
+  assign hero_block = section.blocks | where: 'type', 'hero_block'
 %}
+
 <section class="hero-section">
 
   <div class="l">
+    <div class="hero-text__wrapper">
 
-    {% if hero_heading != blank %}
-      <h1 class="hero-heading white-text uppercase">
-        {{ hero_heading }}
-      </h1>
-    {% endif %}
+      {% if hero_heading != blank %}
+        <h1 class="hero-heading white-text uppercase">
+          {{ hero_heading }}
+        </h1>
+      {% endif %}
 
-    {% if hero_subheading != blank %}
-      <p class="hero-subheading white-text uppercase">{{ hero_subheading }}</p>
+      {% if hero_subheading != blank %}
+        <p class="hero-subheading white-text uppercase">{{ hero_subheading }}</p>
+      {% endif %}
+      {% if hero_block > 0 %}
+        <div class="hero-block">
+          {% for block in hero_block %}
+            {% assign block_text = block.settings.block_text %}
+            <div class="hero-block__item">
+              {% if block_text != '' %}
+                <div class="hero-block__item-copy white-text">
+                  {{ block_text }}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
 
-    {% endif %}
+    </div>
 
   </div>
 
@@ -38,6 +56,19 @@
         "id": "hero_subheading",
         "label": "Hero Subeading",
         "default": "Hunt A Killer: an immersive murder mystery game that’ll keep you and your partner off your phones and cracking cases instead."
+      }
+    ],
+    "blocks": [
+      {
+        "type": "hero_block",
+        "name": "Copy Block",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "block_text",
+            "label": "Block Text"
+          }
+        ]
       }
     ],
     "presets": [
