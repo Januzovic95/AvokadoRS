@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --bg-dark-color: #121212;
+  --bg-white-color: #fff;
+  --bg-red-color: #cd0001;
+
+  --text-dark-color: #121212;
+  --text-white-color: #fff;
+}
+
+/* BASE SETTINGS */
+.l {
+  width: 100%;
+  max-width: 1140px;
+  padding-inline: 20px;
+  margin: 0 auto;
+}
+
+.bg-dark {
+  background-color: var(--bg-dark-color);
+}
+.bg-white {
+  background-color: var(--bg-dark-white);
+}
+
+.bg-red {
+  background-color: var(--bg-red-color);
+}
+
+.dark-text {
+  color: var(--bg-dark-color);
+}
+.white-text {
+  color: var(--bg-white-color);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+/* END BASE SETTINGS */
+
+.hero-text__wrapper {
+  padding: 104px 0;
+  font-family: "Barlow", sans-serif;
+  max-width: 530px;
+}
+.hero-heading {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 52.8px;
+  margin-bottom: 8px;
+  font-family: "Barlow Condensed", sans-serif;
+  max-width: 470px;
+}
+.hero-subheading {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 23.4px;
+  margin-bottom: 32px;
+  max-width: 470px;
+}

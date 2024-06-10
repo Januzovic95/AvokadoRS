@@ -4,12 +4,14 @@
   assign hero_heading = section.settings.hero_heading
   assign hero_subheading = section.settings.hero_subheading
   assign hero_block = section.blocks | where: 'type', 'hero_block'
+  assign hero_button_text = section.settings.hero_button_text
+  assign hero_button_url = section.settings.hero_button_url
 %}
 
 <section class="hero-section bg-dark">
 
   <div class="l">
-    <div class="hero-text__wrapper">
+    <div class="hero-text__wrapper ">
 
       {% if hero_heading != blank %}
         <h1 class="hero-heading white-text uppercase">
@@ -20,14 +22,15 @@
       {% if hero_subheading != blank %}
         <p class="hero-subheading white-text uppercase">{{ hero_subheading }}</p>
       {% endif %}
-      {% if hero_block > 0 %}
+
+      {% if hero_block.size > 0 %}
         <div class="hero-block">
           {% for block in hero_block %}
             {% assign block_text = block.settings.block_text %}
             <div class="hero-block__item">
               {% if block_text != '' %}
                 <div class="hero-block__item-copy white-text">
-                  {{ block_img }}
+                  {% render 'hero-tick' %}
                   {{ block_text }}
                 </div>
               {% endif %}
@@ -36,10 +39,16 @@
         </div>
       {% endif %}
 
+      {% if hero_button_text != blank %}
+        <div class="hero-btn__wrapper">
+          <a href="{{ hero_button_url }}" class="bg-red white-text hero-btn">{{ hero_button_text }}</a>
+        </div>
+      {% else %}
+        <p class="white-text uppercase">OVO NIJE BUTTON</p>
+      {% endif %}
+
     </div>
-
   </div>
-
 
 </section>
 
@@ -55,8 +64,17 @@
       }, {
         "type": "text",
         "id": "hero_subheading",
-        "label": "Hero Subeading",
+        "label": "Hero Subheading",
         "default": "Hunt A Killer: an immersive murder mystery game that’ll keep you and your partner off your phones and cracking cases instead."
+      }, {
+        "type": "text",
+        "id": "hero_button_text",
+        "label": "Button text",
+        "default": "Join the hunt"
+      }, {
+        "type": "url",
+        "id": "hero_button_url",
+        "label": "Button link"
       }
     ],
     "blocks": [
@@ -67,11 +85,8 @@
           {
             "type": "richtext",
             "id": "block_text",
-            "label": "Block Text"
-          }, {
-            "type": "image_picker",
-            "id": "block_img",
-            "label": "Block Image"
+            "label": "Block Text",
+            "default": "Block Text"
           }
         ]
       }
