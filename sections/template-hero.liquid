@@ -6,12 +6,13 @@
   assign hero_block = section.blocks | where: 'type', 'hero_block'
   assign hero_button_text = section.settings.hero_button_text
   assign hero_button_url = section.settings.hero_button_url
+  assign hero_image = section.settings.hero_image
+  assign hero_logo = section.settings.hero_logo
 %}
 
 <section class="hero-section bg-dark">
-
-  <div class="l">
-    <div class="hero-text__wrapper ">
+  <div class="hero-wrapper">
+    <div class="hero-text__wrapper">
 
       {% if hero_heading != blank %}
         <h1 class="hero-heading white-text uppercase">
@@ -29,9 +30,11 @@
             {% assign block_text = block.settings.block_text %}
             <div class="hero-block__item">
               {% if block_text != '' %}
-                <div class="hero-block__item-copy white-text">
-                  {% render 'hero-tick' %}
-                  {{ block_text }}
+                <div class="hero-block__item-wrapper">
+                  <div class="hero-block__item-copy white-text">
+                    {% render 'hero-tick' %}
+                    {{ block_text }}
+                  </div>
                 </div>
               {% endif %}
             </div>
@@ -46,10 +49,27 @@
       {% else %}
         <p class="white-text uppercase">OVO NIJE BUTTON</p>
       {% endif %}
+    </div>
 
+    <div class="hero-img__wrapper">
+      {% if hero_image != blank %}
+        <figure class="hero-image__figure">
+          <img
+            src="{{ hero_image | img_url: 'master' }}"
+            alt="Hero Image"
+            class="hero-image">
+        </figure>
+      {% endif %}
+      {% if hero_logo != blank %}
+        <figure class="hero-logo__figure">
+          <img
+            src="{{ hero_logo | img_url: 'master' }}"
+            alt="Hero logo"
+            class="hero-logo">
+        </figure>
+      {% endif %}
     </div>
   </div>
-
 </section>
 
 {% schema %}
@@ -61,20 +81,31 @@
         "id": "hero_heading",
         "label": "Hero Heading",
         "default": "The Date Night Activity for (True Crime) Lovers"
-      }, {
+      },
+      {
         "type": "text",
         "id": "hero_subheading",
         "label": "Hero Subheading",
         "default": "Hunt A Killer: an immersive murder mystery game that’ll keep you and your partner off your phones and cracking cases instead."
-      }, {
+      },
+      {
         "type": "text",
         "id": "hero_button_text",
         "label": "Button text",
         "default": "Join the hunt"
-      }, {
+      },
+      {
         "type": "url",
         "id": "hero_button_url",
         "label": "Button link"
+      }, {
+        "type": "image_picker",
+        "id": "hero_image",
+        "label": "Hero main image"
+      }, {
+        "type": "image_picker",
+        "id": "hero_logo",
+        "label": "Hero logo"
       }
     ],
     "blocks": [
@@ -83,7 +114,7 @@
         "name": "Copy Block",
         "settings": [
           {
-            "type": "richtext",
+            "type": "text",
             "id": "block_text",
             "label": "Block Text",
             "default": "Block Text"
