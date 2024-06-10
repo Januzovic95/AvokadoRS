@@ -29,7 +29,7 @@
           {% for block in hero_block %}
             {% assign block_text = block.settings.block_text %}
             <div class="hero-block__item">
-              {% if block_text != '' %}
+              {% if block_text != blank %}
                 <div class="hero-block__item-wrapper">
                   <div class="hero-block__item-copy white-text">
                     {% render 'hero-tick' %}
@@ -46,26 +46,18 @@
         <div class="hero-btn__wrapper">
           <a href="{{ hero_button_url }}" class="bg-red white-text hero-btn">{{ hero_button_text }}</a>
         </div>
-      {% else %}
-        <p class="white-text uppercase">OVO NIJE BUTTON</p>
       {% endif %}
     </div>
 
     <div class="hero-img__wrapper">
       {% if hero_image != blank %}
         <figure class="hero-image__figure">
-          <img
-            src="{{ hero_image | img_url: 'master' }}"
-            alt="Hero Image"
-            class="hero-image">
+          {{ hero_image | image_url: width: auto | image_tag: class: "hero-image" }}
         </figure>
       {% endif %}
       {% if hero_logo != blank %}
         <figure class="hero-logo__figure">
-          <img
-            src="{{ hero_logo | img_url: 'master' }}"
-            alt="Hero logo"
-            class="hero-logo">
+          {{ hero_logo | image_url: width: 135 | image_tag: class: "hero-logo" }}
         </figure>
       {% endif %}
     </div>
