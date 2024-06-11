@@ -1,0 +1,90 @@
+{{ 'template-play.css' | asset_url | stylesheet_tag }}
+{{ 'base.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign play_headline = section.settings.play_headline
+  assign play_subheadline = section.settings.play_subheadline
+  assign play_image = section.settings.play_image
+  assign play_block = section.blocks | where: 'type', 'play_block'
+%}
+
+<section class="play-section bg-dark">
+  <div class="l">
+    {% if play_headline != blank %}
+      <h2 class="play-headline heading uppercase barlow-c white-text">
+        {{ play_headline }}
+      </h2>
+    {% endif %}
+
+    <div class="play-content__wrapper">
+      {% if play_image != blank %}
+        {{ play_image | image_url: width: 530 | image_tag: class: "play-image" }}
+      {% endif %}
+      <div class="play-block__wrapper">
+        {% if play_subheadline != blank %}
+          <p class="play-subheadline barlow uppercase white-text">{{ play_subheadline }}</p>
+        {% endif %}
+        <div class="play-block__item-wrapper">
+          {% if play_block.size > 0 %}
+            {% assign block_count = 0 %}
+            {% for block in play_block %}
+              {% assign block_text = block.settings.block_text %}
+              {% assign block_count = block_count | plus: 1 %}
+
+              <div class="play-block__item">
+                {% if block_text != blank %}
+                  <span class="number white-text">{{ block_count }}</span>
+                  <p class="play-block__text barlow white-text">{{ block_text }}</p>
+                {% endif %}
+              </div>
+
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Play Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "play_headline",
+        "label": "Play Headline",
+        "default": "Play Guide"
+      }, {
+        "type": "text",
+        "id": "play_subheadline",
+        "label": "Play Subheadline",
+        "default": "6 boxes—or “episodes”—delivered to your door every month."
+      }, {
+        "type": "image_picker",
+        "id": "play_image",
+        "label": "Play Image"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "play_block",
+        "name": "Copy Block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "block_text",
+            "label": "Block Text",
+            "default": "Block Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Play Section"
+      }
+    ]
+  }
+{% endschema %}
