@@ -1,0 +1,38 @@
+.channel-section {
+  padding: 64px 0 72px;
+}
+.channel-section .l {
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .channel-section {
+    padding: 48px 0 56px;
+  }
+}
+.channel-block__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+@media (max-width: 640px) {
+  .channel-block__wrapper {
+    flex-direction: column;
+  }
+}
+
+.channel-block__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 353px;
+}
+
+.block-headline {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+}

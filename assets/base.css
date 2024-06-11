@@ -20,6 +20,21 @@
   margin: 0 auto;
 }
 
+/*LAYOUTS*/
+
+.flex {
+  display: flex;
+}
+.f-column {
+  flex-direction: column;
+}
+.f-row {
+  flex-direction: row;
+}
+.grid {
+  display: grid;
+}
+
 /*COlORS*/
 .bg-dark {
   background-color: var(--bg-dark-color);

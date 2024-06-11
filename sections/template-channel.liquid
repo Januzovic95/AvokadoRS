@@ -1,0 +1,84 @@
+{{ 'template-channel.css' | asset_url | stylesheet_tag }}
+{{ 'base.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign channel_heading = section.settings.channel_heading
+  assign channel_block = section.blocks | where: 'type', 'channel_block'
+%}
+
+<section class="channel-section bg-white">
+  <div class="l">
+    {% if channel_heading != blank %}
+      <h2 class="barlow-c dark-text heading uppercase">
+        {{ channel_heading }}
+      </h2>
+    {% endif %}
+
+    {% if channel_block.size > 0 %}
+      <div class="channel-block__wrapper">
+        {% for block in channel_block %}
+          {% assign block_heading = block.settings.block_heading %}
+          {% assign block_text = block.settings.block_text %}
+          {% assign block_image = block.settings.block_image %}
+          <div class="channel-block__item">
+            {% if block_heading != blank and block_text != blank %}
+              {% if block_image != blank %}
+                {% comment %} {{ block_image | image_url | image_tag: 'Block Image', class: 'block-image' }} {% endcomment %}
+                <img
+                  src="{{ block_image | image_url }}"
+                  alt="Block Image"
+                  class="block-image">
+              {% else %}
+                <p>IMAGE IS MISSING</p>
+              {% endif %}
+              <p class="block-headline barlow dark-text uppercase">{{ block_heading }}</p>
+              <p class="barlow dark-text">{{ block_text }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Channel Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "channel_heading",
+        "label": "Channel Heading",
+        "default": "Channel Your Inner Detective"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "channel_block",
+        "name": "Copy Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "block_image",
+            "label": "Block Image"
+          }, {
+            "type": "text",
+            "id": "block_heading",
+            "label": "Block Heading",
+            "default": "Block Heading"
+          }, {
+            "type": "text",
+            "id": "block_text",
+            "label": "Block Text",
+            "default": "Block Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Channel Section"
+      }
+    ]
+  }
+{% endschema %}
