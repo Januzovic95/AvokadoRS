@@ -1,0 +1,72 @@
+{{ 'template-usp.css' | asset_url | stylesheet_tag }}
+{{ 'base.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign usp_heading = section.settings.usp_heading
+  assign usp_image = section.settings.usp_image
+%}
+
+<section class="usp-section bg-gray white-text">
+  <div class="l">
+    {% if usp_heading %}
+      <h2 class="usp-heading uppercase barlow">
+        {{ usp_heading }}
+      </h2>
+
+      <div class="usp__content">
+        <div class="loop-trust-animation">
+          {% for i in (1..3) %}
+            <div class="usp__wrapper">
+              {% if section.blocks.size > 0 %}
+                <div class="usp__items">
+                  {% for block in section.blocks %}
+                    {% liquid
+                      assign logo = block.settings.image
+                    %}
+
+                    {% if logo != blank %}
+                      {{ logo | image_url: width: auto | image_tag: class: "logo" }}
+                    {% endif %}
+
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "usp Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "usp_heading",
+        "label": "usp Heading",
+        "default": "FEATURED IN"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "logos",
+        "name": "Logos",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Logo"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "usp Section"
+      }
+    ]
+  }
+{% endschema %}

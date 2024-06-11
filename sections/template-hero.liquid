@@ -1,4 +1,6 @@
 {{ 'template-hero.css' | asset_url | stylesheet_tag }}
+{{ 'base.css' | asset_url | stylesheet_tag }}
+
 
 {% liquid
   assign hero_heading = section.settings.hero_heading
