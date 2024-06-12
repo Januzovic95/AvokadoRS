@@ -1,8 +1,175 @@
 {
   "sections": {
     "template": {
-      "type": "template-hero"
+      "type": "template-hero",
+      "blocks": {
+        "hero_block_Wqb7BJ": {
+          "type": "hero_block",
+          "settings": {
+            "block_text": "Feel like a real-life detective"
+          }
+        },
+        "hero_block_y8BV9q": {
+          "type": "hero_block",
+          "settings": {
+            "block_text": "Exciting puzzling experience"
+          }
+        },
+        "hero_block_dxAyCy": {
+          "type": "hero_block",
+          "settings": {
+            "block_text": "6 “Episodes,” 1 mystery"
+          }
+        },
+        "hero_block_YqCeVW": {
+          "type": "hero_block",
+          "settings": {
+            "block_text": "Delivered right to your door"
+          }
+        }
+      },
+      "block_order": [
+        "hero_block_Wqb7BJ",
+        "hero_block_y8BV9q",
+        "hero_block_dxAyCy",
+        "hero_block_YqCeVW"
+      ],
+      "settings": {
+        "hero_heading": "The Date Night Activity for (True Crime) Lovers",
+        "hero_subheading": "Hunt A Killer: an immersive murder mystery game that’ll keep you and your partner off your phones and cracking cases instead.",
+        "hero_button_text": "Join the hunt",
+        "hero_button_url": "",
+        "hero_image": "shopify:\/\/shop_images\/5d84ffc464b018d5ae79d050_hak_faq_newbg_1.jpg",
+        "hero_logo": "shopify:\/\/shop_images\/Group_48097073.png"
+      }
+    },
+    "template_usp_xmCDhy": {
+      "type": "template-usp",
+      "blocks": {
+        "logos_Feafbk": {
+          "type": "logos",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Frame_48098709.png"
+          }
+        },
+        "logos_3ie9NW": {
+          "type": "logos",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Frame_48098707.png"
+          }
+        },
+        "logos_TQY7nT": {
+          "type": "logos",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Frame_48098704.png"
+          }
+        },
+        "logos_JzEAma": {
+          "type": "logos",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Frame_48098706.png"
+          }
+        },
+        "logos_4KeMzR": {
+          "type": "logos",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Frame_48098705.png"
+          }
+        },
+        "logos_XAhBTF": {
+          "type": "logos",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Frame_48098708.png"
+          }
+        }
+      },
+      "block_order": [
+        "logos_Feafbk",
+        "logos_3ie9NW",
+        "logos_TQY7nT",
+        "logos_JzEAma",
+        "logos_4KeMzR",
+        "logos_XAhBTF"
+      ],
+      "settings": {
+        "usp_heading": "FEATURED IN"
+      }
+    },
+    "template_channel_tw7bMN": {
+      "type": "template-channel",
+      "blocks": {
+        "channel_block_hDH863": {
+          "type": "channel_block",
+          "settings": {
+            "block_image": "shopify:\/\/shop_images\/Icon_grid1_64x64_dcabc49e-c792-4c9b-b909-162f6453111f.png",
+            "block_heading": "Fun & Immersive",
+            "block_text": "A challenging and engaging game that’ll keep your brain teased—and your hands off your phone."
+          }
+        },
+        "channel_block_CL7Nre": {
+          "type": "channel_block",
+          "settings": {
+            "block_image": "shopify:\/\/shop_images\/Icons1.png",
+            "block_heading": "Single or Multi-Person Play",
+            "block_text": "Crack cases solo or combine forces with your partner to solve murder mysteries together."
+          }
+        },
+        "channel_block_U7NGjw": {
+          "type": "channel_block",
+          "settings": {
+            "block_image": "shopify:\/\/shop_images\/Icons.png",
+            "block_heading": "Ongoing Guessing",
+            "block_text": "One mystery, 6 boxes. Let the guessing games continue with a new gripping episode every month."
+          }
+        }
+      },
+      "block_order": [
+        "channel_block_hDH863",
+        "channel_block_CL7Nre",
+        "channel_block_U7NGjw"
+      ],
+      "settings": {
+        "channel_heading": "Channel Your Inner Detective"
+      }
+    },
+    "template_play_zCB4FR": {
+      "type": "template-play",
+      "blocks": {
+        "play_block_BPWkTp": {
+          "type": "play_block",
+          "settings": {
+            "block_text": "Feel like a real-life detective"
+          }
+        },
+        "play_block_yGQTR7": {
+          "type": "play_block",
+          "settings": {
+            "block_text": "Examine the evidence to uncover critical clues, corroborate alibis, create timelines, and more."
+          }
+        },
+        "play_block_3MQTQU": {
+          "type": "play_block",
+          "settings": {
+            "block_text": "After the sixth installment, crack the case and bring the murderer to justice."
+          }
+        }
+      },
+      "block_order": [
+        "play_block_BPWkTp",
+        "play_block_yGQTR7",
+        "play_block_3MQTQU"
+      ],
+      "settings": {
+        "play_headline": "Play Guide",
+        "play_subheadline": "6 boxes—or “episodes”—delivered to your door every month.",
+        "play_image": "shopify:\/\/shop_images\/Us3IIGOwPZE-HD_1.jpg"
+      }
     }
   },
-  "order": ["template"]
+  "order": [
+    "template",
+    "template_usp_xmCDhy",
+    "template_channel_tw7bMN",
+    "template_play_zCB4FR"
+  ]
 }
